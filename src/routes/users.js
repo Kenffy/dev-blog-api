@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const userCtl = require("../controllers/userController");
-const { verifyToken } = require("../utils/verifyToken");
+const { verify } = require("../utils/verifyToken");
 
-router.put("/:id", verifyToken, userCtl.updateUser);
-router.delete("/:id", verifyToken, userCtl.deleteUser);
-router.get("/find/:id", userCtl.getUser);
+router.put("/:id", verify, userCtl.updateUser);
+router.delete("/:id", verify, userCtl.deleteUser);
+router.get("/find/:id", verify, userCtl.getUser);
 
 module.exports = router;

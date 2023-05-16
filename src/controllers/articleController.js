@@ -89,7 +89,7 @@ const addArticleView = async (req, res, next) => {
 
 const getRandomArticles = async (req, res, next) => {
   try {
-    const articles = await Article.aggregate([{ $sample: { size: 10 } }]);
+    const articles = await Article.aggregate([{ $sample: { size: 4 } }]);
     res.status(200).json(articles);
   } catch (err) {
     next(err);
