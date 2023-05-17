@@ -5,5 +5,6 @@ const { verify } = require("../utils/verifyToken");
 router.put("/:id", verify, userCtl.updateUser);
 router.delete("/:id", verify, userCtl.deleteUser);
 router.get("/find/:id", verify, userCtl.getUser);
+router.put("/read/:articleId", verify, userCtl.addToReadList);
 
 module.exports = router;

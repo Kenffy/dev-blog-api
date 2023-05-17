@@ -42,8 +42,24 @@ const getUser = async (req, res, next) => {
   }
 };
 
+const addToReadList = async (req, res, next) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        $push: { readlist: req.params.articleId },
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   updateUser,
   deleteUser,
   getUser,
+  addToReadList,
 };
